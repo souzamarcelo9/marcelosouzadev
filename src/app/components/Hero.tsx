@@ -2,7 +2,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import photo from '../public/MarceloBrq.jpg';
+//import photo from '/MarceloBrq.jpg';
 import dynamic from 'next/dynamic'; // <-- Importe o dynamic
 const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
 const MotionButton = dynamic(() => import('framer-motion').then(mod => mod.motion.button), { ssr: false });
@@ -33,7 +33,7 @@ export default function Hero() {
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 p-1">
             <div className="relative h-full w-full rounded-full overflow-hidden bg-gray-800">
               <Image
-                src={photo} // Replace with your image path
+                src='/MarceloBrq.jpg' // Replace with your image path
                 alt="Marcelo Dev"
                 layout="fill"
                 objectFit="cover"

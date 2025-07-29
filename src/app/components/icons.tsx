@@ -6,7 +6,7 @@ import {
   type Icon as LucideIcon,
 } from "lucide-react"
 import jads from '/jads.jpeg'
-import MeuLogoSVG from '/public/jads.svg';
+import MeuLogoSVG from '../../../public/jads.svg';
 
 export type Icon = LucideIcon
 

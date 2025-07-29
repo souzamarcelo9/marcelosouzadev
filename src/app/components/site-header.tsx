@@ -1,13 +1,14 @@
-import Link from "next/link"
+ import Link from "next/link"
 
-import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
-import { MainNav } from "@/components/main-nav"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { siteConfig } from '@/config/site'
+import { buttonVariants } from "@/app/components/ui/button"
+import { Icons } from "@/app/components/icons"
+import { MainNav } from "@/app/components/main-nav"
+import { ThemeToggle } from "@/app/components/theme-toggle"
 
 export function SiteHeader() {
   return (
+    
     <header className="bg-background sticky top-0 z-40 w-full border-b">
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
         <MainNav items={siteConfig.mainNav} />
@@ -47,6 +48,7 @@ export function SiteHeader() {
           </nav>
         </div>
       </div>
-    </header>
+    </header>    
   )
 }
+ 

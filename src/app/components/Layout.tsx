@@ -1,9 +1,14 @@
 "use client"; // Required for client-side hooks and animations
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+//import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'; // Changed from next/router
+import dynamic from 'next/dynamic'; // <-- Importe o dynamic
+import { SiteHeader } from './site-header';
+const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
+const MotionButton = dynamic(() => import('framer-motion').then(mod => mod.motion.button), { ssr: false });
+import { ThemeProvider } from './theme-provider';
 
 const navItems = [
   { name: 'Sobre', path: '#about' },
@@ -33,14 +38,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   };
 
   return (
+    <>
+    <SiteHeader />
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white">
-      <header
+       <header
         className={`fixed w-full z-50 transition-all duration-300 ${
           scrolled ? 'bg-black/80 backdrop-blur-md py-2' : 'bg-transparent py-4'
         }`}
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
-          <motion.div
+          <MotionDiv
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -48,11 +55,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <Link href="/" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
               Marcelo DEV
             </Link>
-          </motion.div>
+          </MotionDiv>
           
           <nav className="hidden md:flex space-x-8">
             {navItems.map((item) => (
-              <motion.div
+              <MotionDiv
                 key={item.name}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -68,13 +75,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 >
                   {item.name}
                 </Link>
-              </motion.div>
+              </MotionDiv>
             ))}
           </nav>
         </div>
-      </header>
-      
+      </header> 
+            
       <main className="pt-20">{children}</main>
     </div>
+   </>
   );
 }
