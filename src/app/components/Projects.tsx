@@ -9,6 +9,7 @@ const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.d
 const MotionButton = dynamic(() => import('framer-motion').then(mod => mod.motion.button), { ssr: false });
 const MotionA = dynamic(() => import('framer-motion').then(mod => mod.motion.a), { ssr: false });
 import { projectCategories, projects,Project } from '../../../data/projectData';  
+import { ChevronLeftIcon, ChevronRightIcon, XIcon } from 'lucide-react'; // Certifique-se de importar seus ícones
 
   
 export default function Projects() {
@@ -251,7 +252,7 @@ export default function Projects() {
 }
 
 // Icon components
-function ChevronLeftIcon(props) {
+/* function ChevronLeftIcon(props) {
   return (
     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -273,5 +274,5 @@ function XIcon(props) {
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
     </svg>
   );
-}
+} */
 
