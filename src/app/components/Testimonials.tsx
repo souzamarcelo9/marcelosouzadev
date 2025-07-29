@@ -80,7 +80,7 @@ export default function Testimonials() {
                   <p className="text-sm text-gray-400">{testimonial.role}</p>
                 </div>
               </div>
-              <p className="text-gray-300 italic">"{testimonial.content}"</p>
+              <p className="text-gray-300 italic">&quot;{testimonial.content}&quot;</p>
               <div className="mt-6 flex items-center">
                 {[...Array(5)].map((_, i) => (
                   <svg
