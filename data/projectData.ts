@@ -1,5 +1,25 @@
 
-export const projects = [
+// Definição da interface para um item de mídia
+export interface ProjectMedia {
+  type: 'image' | 'video'; // Pode ser 'image' ou 'video'
+  url: string;
+}
+
+// Definição da interface para um projeto
+export interface Project {
+  id: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  category: string; // Ou um tipo literal como 'mobile' | 'business' | etc. se quiser ser mais específico
+  tags: string[];
+  previewImage: string;
+  media: ProjectMedia[]; // Array de itens de mídia
+  liveUrl?: string; // Opcional, por isso o '?'
+}
+
+
+export const projects : Project[] = [
   /* {
     id: 1,
     title: 'E-Commerce Mobile App',

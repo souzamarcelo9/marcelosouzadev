@@ -8,19 +8,19 @@ import dynamic from 'next/dynamic'; // <-- Importe o dynamic
 const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
 const MotionButton = dynamic(() => import('framer-motion').then(mod => mod.motion.button), { ssr: false });
 const MotionA = dynamic(() => import('framer-motion').then(mod => mod.motion.a), { ssr: false });
-import { projectCategories, projects } from '../../../data/projectData';  
+import { projectCategories, projects,Project } from '../../../data/projectData';  
 
   
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState('all');
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
 
   const filteredProjects = activeCategory === 'all' 
     ? projects 
     : projects.filter(project => project.category === activeCategory);
 
-  const openModal = (project) => {
+  const openModal = (project : Project) => {
     setSelectedProject(project);
     setCurrentMediaIndex(0);
   };
@@ -29,16 +29,22 @@ export default function Projects() {
     setSelectedProject(null);
   };
 
-  const nextMedia = () => {
-    setCurrentMediaIndex((prev) => 
-      (prev + 1) % selectedProject.media.length
-    );
+ const nextMedia = () => {
+    // Adicione uma verificação de nulidade, pois selectedProject pode ser null
+    if (selectedProject) {
+      setCurrentMediaIndex((prev) =>
+        (prev + 1) % selectedProject.media.length
+      );
+    }
   };
 
   const prevMedia = () => {
-    setCurrentMediaIndex((prev) => 
-      (prev - 1 + selectedProject.media.length) % selectedProject.media.length
-    );
+    // Adicione uma verificação de nulidade, pois selectedProject pode ser null
+    if (selectedProject) {
+      setCurrentMediaIndex((prev) =>
+        (prev - 1 + selectedProject.media.length) % selectedProject.media.length
+      );
+    }
   };
 
   return (
